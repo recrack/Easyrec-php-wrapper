@@ -10,7 +10,7 @@ ini_set('display_errors','On');
 class Recommender
 {
     #    internal variables
-    private $apikey   = "API_KEY";
+    private $apikey   = "";
     private $tenantid = "EASYREC_DEMO";
     private $request_url = "http://intralife.researchstudio.at:8080/api/1.0";
 
@@ -69,6 +69,17 @@ class Recommender
             return 0;
         }
     }
-
 }
+
+
+
+/*
+$oner = new Recommender("user_example","session_example");
+echo "view function:<br>";
+echo "<pre>".$oner->view("itemid_example","itemdesc_example","itemurl_example")."</pre><br>";
+echo "buy function:<br>";
+echo "<pre>".$oner->buy("itemid_example","itemdesc_example","itemurl_example")."</pre><br>";
+echo "rate function:<br>";
+echo "<pre>".$oner->rate("itemid_example","itemdesc_example","itemurl_example",4)."</pre><br>";
+*/
 ?>
