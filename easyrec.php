@@ -45,6 +45,18 @@ class Recommender
             return 0;
         }
     }
+    
+    public function buy($itemid,$itemdesc,$itemurl)
+    {
+        if(!empty($itemid) and !empty($itemdesc) and !empty($itemurl)) {
+            $itemdesc = str_replace(" ","%20",$itemdesc);
+            $itemurl = str_replace("&","%26",$itemurl);
+            return$this->request("/buy?apikey=".$this->apikey."&tenantid=".$this->tenantid."&itemid=".$itemid."&itemdescription=".$itemdesc."&itemurl=".$itemurl."&userid=".$this->userid."&sessionid=".$this->sessionid);
+        }
+        else {
+            return 0;
+        }    
+    }
 
 }
 
