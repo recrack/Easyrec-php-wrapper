@@ -127,6 +127,15 @@ class Recommendations
         $rec = new SimpleXMLElemend($this->request("/otherusersalsobought?itemid=".$itemid."&userid=".$this->userid);
         return $rec->recommendeditems->item;
     }
+    
+    /*
+        return   id,type,description,url,[imageurl]
+    */
+    public function ratedGood()
+    {
+        $rec = new SimpleXMLElemend($this->request("/itemsratedgoodbyotherusers?itemid=".$itemid."&userid=".$this->userid);
+        return $rec->recommendeditems->item;
+    }
 
 }
 ?>
