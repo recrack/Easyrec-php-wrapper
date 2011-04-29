@@ -111,13 +111,22 @@ class Recommendations
     }
     
     /*
-        return   id,type,description,url
+        return   id,type,description,url,[imageurl]
     */
     public function alsoViewed($itemid)
     {     
         $rec = new SimpleXMLElement($this->request("/otherusersalsoviewed?itemid=42&userid=24EH1723322222A3"));
         return $rec->recommendeditems->item;
     } 
+    
+    /*
+        return   id,type,description,url,[imageurl]
+    */
+    public function alsoBought($itemid)
+    {
+        $rec = new SimpleXMLElemend($this->request("/otherusersalsobought?itemid=".$itemid."&userid=".$this->userid);
+        return $rec->recommendeditems->item;
+    }
 
 }
 ?>
