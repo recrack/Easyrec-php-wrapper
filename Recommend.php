@@ -115,8 +115,13 @@ class Recommendations
     */
     public function alsoViewed($itemid)
     {     
-        $rec = new SimpleXMLElement($this->request("/otherusersalsoviewed?itemid=42&userid=24EH1723322222A3"));
-        return $rec->recommendeditems->item;
+        if(!empty($itemid)) {
+            $rec = new SimpleXMLElement($this->request("/otherusersalsoviewed?itemid=42&userid=24EH1723322222A3"));
+            return $rec->recommendeditems->item;
+        }
+        else {
+            return 0;
+        }
     } 
     
     /*
@@ -124,18 +129,41 @@ class Recommendations
     */
     public function alsoBought($itemid)
     {
-        $rec = new SimpleXMLElemend($this->request("/otherusersalsobought?itemid=".$itemid."&userid=".$this->userid);
-        return $rec->recommendeditems->item;
+        if(!empty($itemid)) {
+            $rec = new SimpleXMLElemend($this->request("/otherusersalsobought?itemid=".$itemid."&userid=".$this->userid);
+            return $rec->recommendeditems->item;
+        }
+        else {
+            return 0;
+        }
     }
     
     /*
         return   id,type,description,url,[imageurl]
     */
-    public function ratedGood()
+    public function ratedGood($itemid)
     {
-        $rec = new SimpleXMLElemend($this->request("/itemsratedgoodbyotherusers?itemid=".$itemid."&userid=".$this->userid);
+        if(!empty($itemid)) {
+            $rec = new SimpleXMLElemend($this->request("/itemsratedgoodbyotherusers?itemid=".$itemid."&userid=".$this->userid);
+            return $rec->recommendeditems->item;
+        }
+        else {
+            return 0;
+        }
+    }
+    
+    /*
+        return   id,type,description,url,[imageurl]
+    */
+    public function recForUser($user_id="")
+    {
+        if($user_id !== "") {
+            $rec = new SimpleXMLElemend($this->request("/recommendationsforuser?userid=".$user_id);
+        }
+        else {
+            $rec = new SimpleXMLElemend($this->request("/recommendationsforuser?userid=".$this->userid);
+        }
         return $rec->recommendeditems->item;
     }
-
 }
 ?>
