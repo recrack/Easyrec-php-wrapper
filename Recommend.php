@@ -130,7 +130,7 @@ class Recommendations
     public function alsoBought($itemid)
     {
         if(!empty($itemid)) {
-            $rec = new SimpleXMLElemend($this->request("/otherusersalsobought?itemid=".$itemid."&userid=".$this->userid);
+            $rec = new SimpleXMLElement($this->request("/otherusersalsobought?itemid=".$itemid."&userid=".$this->userid));
             return $rec->recommendeditems->item;
         }
         else {
@@ -144,7 +144,7 @@ class Recommendations
     public function ratedGood($itemid)
     {
         if(!empty($itemid)) {
-            $rec = new SimpleXMLElemend($this->request("/itemsratedgoodbyotherusers?itemid=".$itemid."&userid=".$this->userid);
+            $rec = new SimpleXMLElement($this->request("/itemsratedgoodbyotherusers?itemid=".$itemid."&userid=".$this->userid));
             return $rec->recommendeditems->item;
         }
         else {
@@ -158,11 +158,17 @@ class Recommendations
     public function recForUser($user_id="")
     {
         if($user_id !== "") {
-            $rec = new SimpleXMLElemend($this->request("/recommendationsforuser?userid=".$user_id);
+            $rec = new SimpleXMLElement($this->request("/recommendationsforuser?userid=".$user_id));
         }
         else {
-            $rec = new SimpleXMLElemend($this->request("/recommendationsforuser?userid=".$this->userid);
+            $rec = new SimpleXMLElement($this->request("/recommendationsforuser?userid=".$this->userid));
         }
+        return $rec->recommendeditems->item;
+    }
+    
+    public function relatedItems($itemid)
+    {
+        $rec = new SimpleXMLElement($this->request("/relateditems?itemid=".$itemid."&userid=".$this->userid));
         return $rec->recommendeditems->item;
     }
 }
