@@ -166,6 +166,9 @@ class Recommendations
         return $rec->recommendeditems->item;
     }
     
+    /*
+        return   id,type,description,url,[imageurl]
+    */
     public function relatedItems($itemid)
     {
         $rec = new SimpleXMLElement($this->request("/relateditems?itemid=".$itemid."&userid=".$this->userid));
