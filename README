@@ -1,0 +1,18 @@
+* Actions($user_id,$session_id);
+  - view($itemid,$itemdesc,$itemurl);
+  - buy($itemid,$itemdesc,$itemurl);
+  - rate($itemid,$itemdesc,$itemurl,$rvalue);
+  
+* Recommendations($user_id);
+  - alsoViewed($itemid,$n=10);
+  - alsoBought($itemid,$n=10);
+  - ratedGood($itemid,$n=10);
+  - recForUser($user_id=$this->userid,$n=10);
+  - relatedItems($itemid,$n=10);
+  
+* Rankings();
+  - mostViewed($timeRange="ALL",$n=10);
+  - mostBought($timeRange="ALL",$n=10);
+  - mostRated($timeRange="ALL",$n=10);
+  - bestRated($timeRange="ALL",$n=10);
+  - worstRated($timeRange="ALL",$n=10);

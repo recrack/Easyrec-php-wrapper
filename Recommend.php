@@ -5,8 +5,11 @@
 #    scope:        PUBLIC
 #
 #/doc
-error_reporting(E_ALL);
-ini_set('display_errors','On');
+if($_GET['debug'] == 1) {
+    error_reporting(E_ALL);
+    ini_set('display_errors','On');
+}
+
 class Actions
 {
     #    internal variables
@@ -92,10 +95,9 @@ class Recommendations
 
     
     #    Constructor
-    function __construct ($userid,$sessionid)
+    function __construct ($userid)
     {
-        $this->userid=$userid;
-        $this->sessionid=$sessionid;        
+        $this->userid=$userid;        
     }
     
     private function request($get_params)
@@ -185,16 +187,15 @@ class Recommendations
 class Rankings
 {
     #    internal variables
-    private $apikey   = "3d66b20f7cbf176bf182946a15a5378e";
+    private $apikey   = "";
     private $tenantid = "EASYREC_DEMO";
     private $request_url = "http://intralife.researchstudio.at:8080/api/1.0";
 
     
     #    Constructor
-    function __construct ($userid,$sessionid)
+    function __construct ()
     {
-        $this->userid=$userid;
-        $this->sessionid=$sessionid;        
+       
     }
     
     private function request($get_params)
